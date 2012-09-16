@@ -5,7 +5,7 @@ setup(
     version='0.0.1',
     author='Joshua P. Mervine',
     author_email='joshua@mervine.net',
-    packages=['httperf'],
+    packages=['httperfpy'],
     #scripts=['scripts/unit'],
     #url='http://pypi.python.org/pypi/TowelStuff/',
     url='http://github.com/jmervine/httperfpy',

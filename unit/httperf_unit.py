@@ -9,7 +9,6 @@ class HttperfTestCase(unittest.TestCase):
 
     def testHttperfDisplayParams(self):
         assert Httperf.display_params
-        print Httperf.display_params()
 
     def testInitHttperfWithDefaults(self):
         global httperf0

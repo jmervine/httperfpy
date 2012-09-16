@@ -1,8 +1,8 @@
 import re, os, sys
 import string
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "httperfpy"))
 
-from httperf import *
+from httperfpy import *
 
 global httperf_path, httperf_results, httperf_verbose_results
 
