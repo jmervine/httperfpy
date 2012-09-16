@@ -7,6 +7,10 @@ from unit_helper import *
 
 class HttperfTestCase(unittest.TestCase):
 
+    def testHttperfDisplayParams(self):
+        assert Httperf.display_params
+        print Httperf.display_params()
+
     def testInitHttperfWithDefaults(self):
         global httperf0
         httperf0 = Httperf()
@@ -24,7 +28,7 @@ class HttperfTestCase(unittest.TestCase):
         self.assertEqual(httperf1.path, unit_helper.httperf_path)
 
     def testInitWithArgsCreatesArg(self):
-        httperf = Httperf(server="localhost")
+        httperf = Httperf(server="localhost", port=8080, num_conns=100)
         self.assertEqual(httperf.params["server"], "localhost")
 
     def testInitWithBadArg(self):

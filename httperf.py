@@ -27,43 +27,49 @@ class Httperf(object):
         else:
             return self.results
 
+    @classmethod
+    def display_params(self):
+        h = Httperf()
+        for param in h.__params().keys():
+            print param
+
     def __cmd(self):
         outstr = self.path
         for key in self.params.keys():
-            outstr = outstr + " --" + key + "=\"" + self.params[key] + "\""
+            outstr = outstr + " --" + key + "=\"" + str(self.params[key]) + "\""
         return outstr
 
     def __params(self):
        return { 
-          "add-header": None,
-          "burst-length": None,
+          "add_header": None,
+          "burst_length": None,
           "client": None,
-          "close-with-reset": None,
+          "close_with_reset": None,
           "debug": None,
-          "failure-status": None,
+          "failure_status": None,
           "hog": None,
-          "http-version": None,
-          "max-connections": None,
-          "max-piped-calls": None,
+          "http_version": None,
+          "max_connections": None,
+          "max_piped_calls": None,
           "method": None,
-          "no-host-hdr": None,
-          "num-calls": None,
-          "num-conns": None,
+          "no_host_hdr": None,
+          "num_calls": None,
+          "num_conns": None,
           "period": None,
           "port": None,
-          "print-reply": None,
-          "print-request": None,
+          "print_reply": None,
+          "print_request": None,
           "rate": None,
-          "recv-buffer": None,
-          "retry-on-failure": None,
-          "send-buffer": None,
+          "recv_buffer": None,
+          "retry_on_failure": None,
+          "send_buffer": None,
           "server": None,
-          "server-name": None,
-          "session-cookies": None,
+          "server_name": None,
+          "session_cookies": None,
           "ssl": None,
-          "ssl-ciphers": None,
-          "ssl-no-reuse": None,
-          "think-timeout": None,
+          "ssl_ciphers": None,
+          "ssl_no_reuse": None,
+          "think_timeout": None,
           "timeout": None,
           "uri": None,
           "verbose": None,
@@ -72,6 +78,7 @@ class Httperf(object):
           "wsess": None,
           "wsesslog": None,
           "wset": None } 
+
 
 class HttperfParser(object):
 

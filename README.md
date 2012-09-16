@@ -35,7 +35,7 @@ See: [httperf-0.9.1 with individual connection times](http://www.rubyops.net/201
 
 ## Installation / Setup
 
-For now, simple clone code and add checkout location to your PYTHONPATH.
+For now, simply clone code and add checkout location to your PYTHONPATH.
 
 ### Running tests...
 
@@ -49,13 +49,21 @@ For now, simple clone code and add checkout location to your PYTHONPATH.
 
         from httperf import Httperf
         
-        perf = Httperf()
+        perf = Httperf(server="www.example.com", 
+                        port=8080,
+                        num_conns=100)
+        # replace dashes ("-") with underscores in httperf options
+
         perf.parser = True
 
         results = perf.run()
 
         print results["connection_time_avg"] + " is avg"
         print results["connection_time_max"] + " is max"
+
+
+You can use `Httperf.display_options` to print a list of all available options.
+
 
 #### Stand-alone parser...
 
