@@ -52,7 +52,7 @@ For now, simply clone code and add checkout location to your PYTHONPATH.
         perf = Httperf(server="www.example.com", 
                         port=8080,
                         num_conns=100)
-        # replace dashes ("-") with underscores in httperf options
+        # replace dashes ("-") with underscores ("_") in httperf options
 
         perf.parser = True
 
