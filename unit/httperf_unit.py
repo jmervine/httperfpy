@@ -1,8 +1,9 @@
 import unit_helper
 import unittest
-import re
+import re, os, sys
 
-from httperf import Httperf
+# import everything unit_helper does
+from unit_helper import *
 
 class HttperfTestCase(unittest.TestCase):
 
@@ -13,7 +14,6 @@ class HttperfTestCase(unittest.TestCase):
 
     def testInitWithDefaultPathSet(self):
         self.assertEqual(httperf0.path, "httperf")
-
 
     def testInitHttperfWithPath(self):
         global httperf1
@@ -53,6 +53,12 @@ class HttperfTestCase(unittest.TestCase):
     def testRunResultsContainsHttperfResults(self):
         m = re.search('httperf --client=0/1 --server=localhost' , res_string)
         self.assertNotEqual(m, None)
+
+    def testRunResultsWithParser(self):
+        httperf = Httperf()
+        httperf.parser = True
+        results = httperf.run()
+        self.assertEqual(len(results), 50)
 
 
 if __name__ == "__main__":
