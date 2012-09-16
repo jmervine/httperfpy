@@ -1,52 +1,65 @@
-# httperfpy
+=========
+httperfpy
+=========
 
 A python port of [httperfrb](http://github.com/rubyops/httperfrb).
 
-> Built and tested using: 
->
->   $ python --version
->   Python 2.7.3
->
->   $ uname -s -r -m
->   Linux 3.2.0-29-generic x86_64 
+Built and tested using: 
 
-## Installing 'httperf'
+        $ python --version
+        Python 2.7.3
+
+        $ uname -s -r -m
+        Linux 3.2.0-29-generic x86_64 
+
+
+
+Installing 'httperf'
+====================
 
 Requires httperf, of course...
 
-### Mac
+Mac
+------
 
     sudo port install httperf
 
-### Debian / Ubuntu
+Debian / Ubuntu
+---------------
 
     sudo apt-get install httperf
 
-### Redhat / CentOS
+Redhat / CentOS
+---------------
 
     sudo yum install httperf
     
-### My 'httperf'
+My 'httperf'
+------------
 
-> ** This is required for proper verbose handling. **
+** This is required for proper verbose handling. **
 
-See: [httperf-0.9.1 with individual connection times](http://www.rubyops.net/2012/08/13/httperf-0_9_1_with_individual_connection_times).
+See: `httperf-0.9.1 with individual connection times<http://www.rubyops.net/2012/08/13/httperf-0_9_1_with_individual_connection_times>`.
 
 
-## Installation / Setup
+Installation / Setup
+====================
 
 For now, simply clone code and add checkout location to your PYTHONPATH.
 
-### Running tests...
+Running tests...
+----------------
 
 1. `sudo apt-get install python-unit`
 2. `git clone https://github.com/jmervine/httperfpy`
 3. `cd httperfpy`
 4. `./scripts/unit`
 
-## Usage
 
+Usage
+-----
 
+        #!/usr/bin/env python
         from httperf import Httperf
         
         perf = Httperf(server="www.example.com", 
@@ -65,8 +78,10 @@ For now, simply clone code and add checkout location to your PYTHONPATH.
 You can use `Httperf.display_options` to print a list of all available options.
 
 
-#### Stand-alone parser...
+Stand-alone parser...
+---------------------
 
+        #!/usr/bin/env python
         from httperf import HttperfParser
         
         results = HttperfParser.parse(httperf_result_string)
@@ -75,7 +90,8 @@ You can use `Httperf.display_options` to print a list of all available options.
       
 
 
-##### Parser Keys: 
+Parser Keys: 
+------------
 
     - command
     - max_connect_burst_length
