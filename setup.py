@@ -12,8 +12,8 @@ setup(
     license='LICENSE.txt',
     description='Python wrapper for httperf.',
     long_description=open('README.txt').read(),
-    install_requires=[
-        #"Django >= 1.1.1",
-        #"caldav == 0.1.4",
-    ],
+    #install_requires=[
+        ##"Django >= 1.1.1",
+        ##"caldav == 0.1.4",
+    #],
 )

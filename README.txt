@@ -45,7 +45,17 @@ See: `httperf-0.9.1 with individual connection times<http://www.rubyops.net/2012
 Installation / Setup
 ====================
 
-For now, simply clone code and add checkout location to your PYTHONPATH.
+Perferred Method
+----------------
+
+        $ sudo pip install httperfpy
+
+See: http://pypi.python.org/pypi/httperfpy/
+
+From Source
+-----------
+
+Simply clone code and add checkout location to your PYTHONPATH.
 
 Running tests...
 ----------------
