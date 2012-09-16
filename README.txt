@@ -2,7 +2,7 @@
 httperfpy
 =========
 
-A python port of [httperfrb](http://github.com/rubyops/httperfrb).
+A python port of `httperfrb<http://github.com/rubyops/httperfrb>`.
 
 Built and tested using: 
 
@@ -50,10 +50,10 @@ For now, simply clone code and add checkout location to your PYTHONPATH.
 Running tests...
 ----------------
 
-1. `sudo apt-get install python-unit`
-2. `git clone https://github.com/jmervine/httperfpy`
-3. `cd httperfpy`
-4. `./scripts/unit`
+1. sudo apt-get install python-unit
+2. git clone https://github.com/jmervine/httperfpy.git
+3. cd httperfpy
+4. ./scripts/unit
 
 
 Usage
