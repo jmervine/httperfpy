@@ -34,10 +34,12 @@ class Httperf(object):
             print param
 
     def __cmd(self):
-        outstr = self.path
+        args = [self.path]
         for key in self.params.keys():
-            outstr = outstr + " --" + key + "=\"" + str(self.params[key]) + "\""
-        return outstr
+            val = str(self.params[key])
+            key = key.replace('_', '-')
+            args.append('--%s="%s"' % (key, val))
+        return ' '.join(args)
 
     def __params(self):
        return { 

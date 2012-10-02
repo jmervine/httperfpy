@@ -63,6 +63,12 @@ class HttperfTestCase(unittest.TestCase):
         results = httperf.run()
         self.assertEqual(len(results), 50)
 
+    def testSluggedCmdArgs(self):
+        httperf = Httperf(server="localhost", num_conns="5")
+        results = httperf.run()
+        m = re.search('unrecognized option \'--num_conns=5\'', results)
+        self.assertEqual(m, None)
+
 
 if __name__ == "__main__":
     unittest.main()
