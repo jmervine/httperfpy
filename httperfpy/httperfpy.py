@@ -42,7 +42,7 @@ class Httperf(object):
         return ' '.join(args)
 
     def __params(self):
-       return { 
+       return {
           "add_header": None,
           "burst_length": None,
           "client": None,
@@ -79,7 +79,7 @@ class Httperf(object):
           "wlog": None,
           "wsess": None,
           "wsesslog": None,
-          "wset": None } 
+          "wset": None }
 
 
 class HttperfParser(object):
@@ -89,13 +89,13 @@ class HttperfParser(object):
 
         verbose_expression = re.compile("^Connection lifetime = ([0-9]+\.[0-9]+)(\s?)", re.M|re.I)
 
-        lines = result_string.split("\n") 
+        lines = result_string.split("\n")
         matches = {}
 
         verbose_connection_times = []
 
         for line in lines:
-            
+
             verbose_match = verbose_expression.match(line)
             if verbose_match:
                 verbose_connection_times.append(verbose_match.group(1))
@@ -109,7 +109,7 @@ class HttperfParser(object):
                     if line_match:
                         matches[key] = line_match.group(1)
                         #break
-        
+
         if not len(verbose_connection_times) == 0:
             matches["connection_times"] = verbose_connection_times
             for pct in self.__percentiles():
@@ -137,7 +137,7 @@ class HttperfParser(object):
 
     @classmethod
     def __percentiles(self):
-        return [ 75, 80, 85, 90, 95, 99 ] 
+        return [ 75, 80, 85, 90, 95, 99 ]
 
     @classmethod
     def __expressions(self):
@@ -146,7 +146,7 @@ class HttperfParser(object):
 
         # Maximum connect burst length:
         "max_connect_burst_length": re.compile("Maximum connect burst length: ([0-9]*?\.?[0-9]+)$", re.I|re.M),
-        
+
         # Total:
         "total_connections": re.compile("^Total: connections ([0-9]*?\.?[0-9]+) ", re.I|re.M),
         "total_requests": re.compile("^Total: connections .+ requests ([0-9]*?\.?[0-9]+) ", re.I|re.M),
@@ -181,7 +181,7 @@ class HttperfParser(object):
         "reply_rate_max": re.compile("^Reply rate \[replies\/s\]: min .+ max ([0-9]*?\.?[0-9]+) ", re.I|re.M),
         "reply_rate_stddev": re.compile("^Reply rate \[replies\/s\]: min .+ stddev ([0-9]*?\.?[0-9]+) ", re.I|re.M),
         "reply_rate_samples": re.compile("^Reply rate \[replies\/s\]: min .+ \(([0-9]*?\.?[0-9]+) samples", re.I|re.M),
-        
+
         # Reply time [ms]:
         "reply_time_response": re.compile("^Reply time \[ms\]: response ([0-9]*?\.?[0-9]+) ", re.I|re.M),
         "reply_time_transfer": re.compile("^Reply time \[ms\]: response .+ transfer ([0-9]*?\.?[0-9]+)$", re.I|re.M),
@@ -205,7 +205,7 @@ class HttperfParser(object):
         "cpu_time_user_pct": re.compile("^CPU time \[s\]: user .+ \(user ([0-9]*?\.?[0-9]+)\% ", re.I|re.M),
         "cpu_time_system_pct": re.compile("^CPU time \[s\]: user .+ system .+ system ([0-9]*?\.?[0-9]+)\% ", re.I|re.M),
         "cpu_time_total_pct": re.compile("^CPU time \[s\]: user .+ total ([0-9]*?\.?[0-9]+)\%", re.I|re.M),
-       
+
         # Net I/O:
         "net_io_kb_sec": re.compile("^Net I\/O: ([0-9]*?\.?[0-9]+) KB", re.I|re.M),
         "net_io_bps": re.compile("^Net I\/O: .+ \((.+) bps\)", re.I|re.M),
