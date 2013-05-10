@@ -70,7 +70,7 @@ Usage
 -----
 
         #!/usr/bin/env python
-        from httperf import Httperf
+        from httperfpy import Httperf
         
         perf = Httperf(server="www.example.com", 
                         port=8080,
@@ -92,7 +92,7 @@ Stand-alone parser...
 ---------------------
 
         #!/usr/bin/env python
-        from httperf import HttperfParser
+        from httperfpy import HttperfParser
         
         results = HttperfParser.parse(httperf_result_string)
         print results["connection_time_avg"] + " is avg"
