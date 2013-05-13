@@ -1,4 +1,5 @@
 import cStringIO, re
+import subprocess
 from subprocess import Popen, PIPE, STDOUT
 
 class Httperf(object):
@@ -21,11 +22,14 @@ class Httperf(object):
         self.params[key] = val
 
     def run(self):
-        self.results = Popen(self.__cmd(), shell=True, stdout=PIPE, stderr=STDOUT, close_fds=True).stdout.read()
-        if self.parser:
-            return HttperfParser.parse(self.results)
-        else:
-            return self.results
+        try:
+            self.results = subprocess.check_output(self.__cmd(), shell=True, stderr=subprocess.STDOUT, close_fds=True)
+            if self.parser:
+                return HttperfParser.parse(self.results)
+            else:
+                return self.results
+        except subprocess.CalledProcessError as er:
+            return { "error" : er.output }
 
     @classmethod
     def display_params(self):
