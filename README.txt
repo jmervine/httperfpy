@@ -2,7 +2,7 @@
 httperfpy
 =========
 
-A python port of httperfrb<http://github.com/rubyops/httperfrb>.
+A python port of httperfrb http://github.com/jmerivne/httperfrb.
 
 Built and tested using: 
 
