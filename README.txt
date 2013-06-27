@@ -39,7 +39,7 @@ My 'httperf'
 
 ** This is required for proper verbose handling. **
 
-See: `httperf-0.9.1 with individual connection times<http://www.rubyops.net/2012/08/13/httperf-0_9_1_with_individual_connection_times>`.
+See: http://mervine.net/httperf-0-9-1-with-individual-connection-times.
 
 
 Installation / Setup
