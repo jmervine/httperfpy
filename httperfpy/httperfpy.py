@@ -3,14 +3,25 @@ from subprocess import Popen, PIPE, STDOUT
 
 class Httperf(object):
 
-    def __init__(self, path=None, **kwargs):
+    def __init__(self, *args, **kwargs):
         self.params = {}
+        self.args = []
         self.parser = False
-        if path == None:
-            self.path = "httperf"
-        else:
-            self.path = path
 
+        # Poping path from kwargs if exist
+        if 'path' in kwargs:
+            self.path = kwargs['path']
+            del kwargs['path']
+        else:
+            self.path = 'httperf'
+
+        # Args for each argument which is not key:value based (hog, ssl...)
+        for argument in args:
+            if not argument in set(self.__params().keys()):
+                raise Exception("Invalid httperf option passed: {}".format(key))
+            self.args.append("--%s" % argument)
+
+        # Arguments passed to httperf
         for key in kwargs:
             if not key in set(self.__params().keys()):
                 raise Exception("Invalid httperf option passed:: " + key)
@@ -35,6 +46,9 @@ class Httperf(object):
 
     def __cmd(self):
         args = [self.path]
+        if self.args:
+            args += self.args
+
         for key in self.params.keys():
             val = str(self.params[key])
             key = key.replace('_', '-')

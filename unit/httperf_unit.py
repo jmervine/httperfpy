@@ -30,9 +30,13 @@ class HttperfTestCase(unittest.TestCase):
         httperf = Httperf(server="localhost", port=8080, num_conns=100)
         self.assertEqual(httperf.params["server"], "localhost")
 
-    def testInitWithBadArg(self):
+    def testInitWithBadKwArg(self):
         with self.assertRaises(Exception):
             httperf = Httperf(bad="localhost")
+
+    def testInitWithBadArg(self):
+        with self.assertRaises(Exception):
+            httperf = Httperf('bad')
 
     def testUpdateOptionAlreadyCreated(self):
         httperf = Httperf(server="localhost")
