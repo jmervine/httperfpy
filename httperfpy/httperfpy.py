@@ -1,4 +1,4 @@
-import cStringIO, re
+import re
 from subprocess import Popen, PIPE, STDOUT
 
 class Httperf(object):
