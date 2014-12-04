@@ -2,3 +2,4 @@
 .*sw*
 /dist/
 /docs/
+.ropeproject
