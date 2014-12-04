@@ -58,8 +58,24 @@ class Httperf(object):
         for key in self.params.keys():
             val = str(self.params[key])
             key = key.replace('_', '-')
-            args.append('--%s="%s"' % (key, val))
+            if key in self.__boolean_params():
+                args.append('--%s' % key)
+            else:
+                args.append('--%s="%s"' % (key, val))
+
         return ' '.join(args)
+
+    def __boolean_params(self):
+        return [
+            "hog",
+            "no_host_hdr",
+            "retry_on_failure",
+            "session_cookies",
+            "ssl",
+            "ssl_no_reuse",
+            "verbose",
+            "version"
+        ]
 
     def __params(self):
         return {

@@ -1,9 +1,10 @@
 import unit_helper
 import unittest
-import re, os, sys
+import re
 
 # import everything unit_helper does
 from unit_helper import *
+
 
 class HttperfTestCase(unittest.TestCase):
 
@@ -27,16 +28,36 @@ class HttperfTestCase(unittest.TestCase):
         self.assertEqual(httperf1.path, unit_helper.httperf_path)
 
     def testInitWithArgsCreatesArg(self):
-        httperf = Httperf(server="localhost", port=8080, num_conns=100)
+        # arg method
+        httperf = Httperf('hog', server="localhost", port=8080, num_conns=100)
         self.assertEqual(httperf.params["server"], "localhost")
+        self.assertEqual(('--hog' in httperf.args), True)
+
+        res_str = httperf.run()
+        m = re.search('--hog', res_str)
+        self.assertNotEqual(m, None)
+
+        m = re.search('--hog=', res_str)
+        self.assertEqual(m, None)
+
+        # param method
+        httperf = Httperf(hog=True, server="localhost", port=8080, num_conns=100)
+        self.assertEqual(httperf.params["hog"], True)
+
+        res_str = httperf.run()
+        m = re.search('--hog', res_str)
+        self.assertNotEqual(m, None)
+
+        m = re.search('--hog=', res_str)
+        self.assertEqual(m, None)
 
     def testInitWithBadKwArg(self):
         with self.assertRaises(Exception):
-            httperf = Httperf(bad="localhost")
+            Httperf(bad="localhost")
 
     def testInitWithBadArg(self):
         with self.assertRaises(Exception):
-            httperf = Httperf('bad')
+            Httperf('bad')
 
     def testUpdateOptionAlreadyCreated(self):
         httperf = Httperf(server="localhost")
@@ -52,13 +73,14 @@ class HttperfTestCase(unittest.TestCase):
         httperf = Httperf()
         global res_string
         res_string = httperf.run()
+
         self.assertNotEqual(res_string, None)
 
     def testRunResultsNotEmpty(self):
         self.assertNotEqual(res_string, "")
 
     def testRunResultsContainsHttperfResults(self):
-        m = re.search('httperf --client=0/1 --server=localhost' , res_string)
+        m = re.search('httperf --client=0/1 --server=localhost', res_string)
         self.assertNotEqual(m, None)
 
     def testRunResultsWithParser(self):
@@ -76,4 +98,3 @@ class HttperfTestCase(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

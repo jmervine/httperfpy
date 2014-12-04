@@ -95,6 +95,10 @@ Passing variables and key-values to httperf
         # arguments, key-value arguments
         perf = Httperf('hog', 'ssl', path='/path/to/httperf',
                 server='www.example.com'...)
+
+        # or only key-value arguments
+        perf = Httperf(hog=True, ssl=True, path='/path/to/httperf',
+                server='www.example.com'...)
         ...
 
 
