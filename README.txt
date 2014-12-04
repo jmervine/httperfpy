@@ -4,13 +4,13 @@ httperfpy
 
 A python port of httperfrb http://github.com/jmerivne/httperfrb.
 
-Built and tested using: 
+Built and tested using:
 
         $ python --version
         Python 2.7.3
 
         $ uname -s -r -m
-        Linux 3.2.0-29-generic x86_64 
+        Linux 3.2.0-29-generic x86_64
 
 
 
@@ -33,7 +33,7 @@ Redhat / CentOS
 ---------------
 
     sudo yum install httperf
-    
+
 My 'httperf'
 ------------
 
@@ -71,8 +71,8 @@ Usage
 
         #!/usr/bin/env python
         from httperfpy import Httperf
-        
-        perf = Httperf(server="www.example.com", 
+
+        perf = Httperf(server="www.example.com",
                         port=8080,
                         num_conns=100)
         # replace dashes ("-") with underscores ("_") in httperf options
@@ -87,20 +87,30 @@ Usage
 
 You can use `Httperf.display_options` to print a list of all available options.
 
+Passing variables and key-values to httperf
+
+        #!/usr/bin/env python
+        from httperfpy import Httperf
+
+        # arguments, key-value arguments
+        perf = Httperf('hog', 'ssl', path='/path/to/httperf',
+                server='www.example.com'...)
+        ...
+
 
 Stand-alone parser...
 ---------------------
 
         #!/usr/bin/env python
         from httperfpy import HttperfParser
-        
+
         results = HttperfParser.parse(httperf_result_string)
         print results["connection_time_avg"] + " is avg"
         print results["connection_time_max"] + " is max"
-      
 
 
-Parser Keys: 
+
+Parser Keys:
 ------------
 
     - command
@@ -153,5 +163,5 @@ Parser Keys:
     - errors_addr_unavail
     - errors_ftab_full
     - errors_other
-         
+
 
